@@ -145,7 +145,7 @@ You need to share your work with us, add them to the course repository that you 
 
 > Pull requests let you tell others about changes you've pushed to a repository on GitHub. Once a pull request is opened, you can discuss and review the potential changes with collaborators and add follow-up commits before the changes are merged into the repository.
 
-Begin by going to [https://github.com/odc-student/orange-end-of-studies-challenge-23](https://github.com/odc-student/orange-end-of-studies-challenge-23) and clicking on the **Pull requests** button near the top then **New pull request** .
+Begin by going to [https://github.com/odc-student/orange-end-of-studies-challenge](https://github.com/odc-student/orange-end-of-studies-challenge) and clicking on the **Pull requests** button near the top then **New pull request** .
 
 This will bring you to a page that will allow you to compare across changes. Since you wish to submit changes on a different fork, then click on the hyperlinked phrase **compare across forks**.
 
