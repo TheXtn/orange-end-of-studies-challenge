@@ -1,0 +1,16 @@
+
+.login__container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 3rem;
+}
+
+
+.login__content{
+    width: 400px;
+    height: auto;
+    background-color: rgb(243, 235, 226);
+    border-radius: 20px;
+    padding: 20px;
+}
