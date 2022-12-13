@@ -17,6 +17,14 @@ const add_user = (req, res) => {
         })
 }
 
+const get_users = (req,res) => {
+    User.find()
+        .then((result) => {
+            res.send(result);
+        })
+        .catch((err) => console.log(err));
+}
+
 // const login = async (req: Request, res: Response, next: NextFunction) => {
 //     try {
 //       const { email, password } = req.body;
@@ -64,4 +72,4 @@ const login = (req, res) => {
         .catch((err) => console.error(err));
 }
 
-module.exports = {login,add_user};
+module.exports = {login,add_user,get_users};

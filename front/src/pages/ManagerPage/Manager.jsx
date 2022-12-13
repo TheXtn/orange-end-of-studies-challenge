@@ -13,11 +13,10 @@ import {
   ModalFooter,
 } from "reactstrap";
 import Header from "../../components/Header/Header";
-import "./itemsPage.css";
 import { useDispatch } from "react-redux";
 import { setItem } from "../../redux/items-slice";
 
-const ItemsPage = () => {
+const Manager = () => {
   const [name, setName] = React.useState("");
   const [price, setPrice] = React.useState("");
   const [stock, setStock] = React.useState("");
@@ -26,7 +25,7 @@ const ItemsPage = () => {
   const [priceEdit, setPriceEdit] = React.useState("");
   const [stockEdit, setStockEdit] = React.useState("");
 
-  const [items, setItems] = React.useState(null);
+  const [users, setUsers] = React.useState(null);
   const [error, setError] = React.useState(false);
   const [isPending, setPending] = React.useState(true);
 
@@ -80,7 +79,7 @@ const ItemsPage = () => {
   };
 
   React.useEffect(() => {
-    fetch("http://localhost:5000/items")
+    fetch("http://localhost:5000/user/all")
       .then((res) => {
         if (!res.ok) {
           setError(true);
@@ -89,12 +88,12 @@ const ItemsPage = () => {
         return res.json();
       })
       .then((data) => {
-        setItems(data);
+        setUsers(data);
         setPending(false);
         setError(false);
       })
       .catch((err) => console.log(err));
-  }, [items]);
+  }, [users]);
 
   const handleDelete = (id) => {
     fetch(`http://localhost:5000/items/delete/${id}`, {
@@ -150,71 +149,7 @@ const ItemsPage = () => {
       <Header />
 
       <div className="items container">
-        <div className="d-flex justify-content-center flex-column">
-          <h1 className="d-flex justify-content-center">Add Item</h1>
-          <Form
-            name="myForm"
-            className="form mb-2 mt-1"
-            onSubmit={(e) => {
-              e.preventDefault();
-              handleSubmit(e);
-            }}
-          >
-            <FormGroup className="w-100">
-              <Label for="exampleName" className="label">
-                Name
-              </Label>
-              <Input
-                id="exampleName"
-                name="name"
-                placeholder="Enter the name..."
-                type="text"
-                value={name}
-                onChange={handleNameChange}
-              />
-            </FormGroup>
-
-            <FormGroup className="mt-2 w-100">
-              <Label for="price" className="label">
-                Price
-              </Label>
-              <Input
-                id="price"
-                name="price"
-                placeholder="Enter the price..."
-                type="number"
-                value={price}
-                onChange={handlePriceChange}
-              />
-            </FormGroup>
-
-            <FormGroup className="mt-2 w-100">
-              <Label for="stock" className="label">
-                Stock
-              </Label>
-              <Input
-                id="stock"
-                name="stock"
-                placeholder="Enter the stock..."
-                type="number"
-                value={stock}
-                onChange={handleStockChange}
-              />
-            </FormGroup>
-
-            {/* {!isSubmit && ( */}
-            <div className="d-flex justify-content-center">
-              <Button
-                //disabled={Object.keys(formErrors).length !== 0}
-                type="submit"
-              >
-                Add Item
-              </Button>
-            </div>
-            {/* )} */}
-          </Form>
-        </div>
-
+        <h1>Users</h1>
         {error && <h5>Not Found</h5>}
         {isPending && (
           <>
@@ -228,21 +163,21 @@ const ItemsPage = () => {
               <tr>
                 <th>#</th>
                 <th>Name</th>
-                <th>Price</th>
-                <th>Stock</th>
+                <th>LastName</th>
+                <th>Email</th>
                 <th>Details</th>
                 <th>Edit</th>
                 <th>Delete</th>
               </tr>
             </thead>
             <tbody>
-              {items &&
-                items.map((item, key) => (
+              {users &&
+                users.map((item, key) => (
                   <tr key={key}>
                     <td>{key + 1}</td>
                     <td>{item.name}</td>
-                    <td>{item.price}</td>
-                    <td>{item.stock}</td>
+                    <td>{item.lastName}</td>
+                    <td>{item.email}</td>
                     <td>
                       <Button
                         onClick={() => {
@@ -346,4 +281,4 @@ const ItemsPage = () => {
   );
 };
 
-export default ItemsPage;
+export default Manager;

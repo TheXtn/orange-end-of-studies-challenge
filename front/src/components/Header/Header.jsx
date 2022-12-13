@@ -11,6 +11,10 @@ const NAV__LINKS = [
     display: "Items",
     url: "/items",
   },
+  {
+    display: "users",
+    url: "/users",
+  },
 ];
 
 const Header = () => {
