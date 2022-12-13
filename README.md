@@ -101,7 +101,7 @@ You will need to build the following 5 pages with React:
 ### Clone the Repository
 
 ```sh
-git clone https://github.com/odc-student/orange-end-of-studies-challenge-23.git
+git clone https://github.com/odc-student/orange-end-of-studies-challenge.git
 
 ```
 
