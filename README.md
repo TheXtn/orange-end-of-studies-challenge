@@ -1,4 +1,100 @@
-# orange-end-of-studies-challenge
+# Orange 2023 - End of studies challenge
+
+## Assignment [Github Link](https://github.com/odc-student/orange-end-of-studies-challenge)
+
+You will get an invitation via email to join the Github Orange Student Organisation. You will have to accept the invitation to join the assignment.
+
+### Overview
+
+To complete this challenge, you will need to write a simple web app, and provide us the source files to be built.
+The purpose of this challenge is to assess your skills and approach to composing a simple web app given a set of pages and an API feed.
+We will also assess the generated HTML, CSS, and JS output.
+
+This challenge is expected to take about 4-6 hours.
+
+### The challenge
+
+### Details
+
+Build a stock management **MERN** Stack (MongoDB, Express JS, React-Redux, Node JS) web
+application with the following requirements:
+
+- Manager
+
+❏ As a **manager** I can sign in.
+
+❏ As a **manager** I can create new user/item.
+
+❏ As a **manager** I can edit an existing user/item.
+
+❏ As a **manager** I can view all the existing users/items.
+
+❏ As a **manager** I can delete any particular user/item.
+
+❏ As a **manager** I can sign out.
+
+- User
+
+❏ As a **user** I can sign in/up.
+
+❏ As a **user** I can not see the list of users.
+
+❏ As a **user** I can add a new item.
+
+❏ As a **user** I can edit an existing item.
+
+❏ As a **user** I can view all the existing items.
+
+❏ As a **user** I can delete any particular item.
+
+❏ As a **user** I can check the stock of any particular item.
+
+❏ As a **user** I can increment and decrement the stock of any particular item.
+
+❏ As a **user** I can view all the details of any particular item.
+
+❏ As a **user** I can sign out.
+
+### Instructions
+
+- The UI of the application should be appealing and easy to use
+- The application should justify the area of the problem statement
+- Clean and sustainable code will be appreciated. Code should be readable/easily
+- understandable
+- Separate `frontend` and `backend` folders
+
+### Frontend Details
+
+You will need to build the following 5 pages with React:
+
+- A **Register Page**
+- A **Login Page**
+- A **Home Page**
+- A **Users Page**
+- A **Items Page**
+
+## Backend structure
+
+```sh
+.
+├── index.js
+├── src
+│   ├── controllers
+│   │   ├── AuthController.js
+│   │   └── ItemController.js
+│   ├── middlewares
+│   │   ├── multer.js
+│   │   └── verify-token.js
+│   ├── models
+│   │   ├── ItemModel.js
+│   │   └── UserModel.js
+│   └── routes
+│       ├── item.js
+│       └── auth.js
+├── uploads
+│   └── images.*
+└── package.json
+```
 
 # Let's start
 
