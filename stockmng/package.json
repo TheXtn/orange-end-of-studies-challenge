@@ -5,8 +5,8 @@
   "scripts": {
     "production": "cross-env NODE_ENV=production NODE_OPTIONS=--openssl-legacy-provider  node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
     "dev": "cross-env NODE_OPTIONS=\"--openssl-legacy-provider --inspect\" next dev",
-    "build": "cross-env NODE_OPTIONS=\"--openssl-legacy-provider --inspect\"  next build",
-    "start": "cross-env NODE_OPTIONS=\"--openssl-legacy-provider --inspect\"  next dev",
+    "build": "cross-env NODE_OPTIONS=\"--openssl-legacy-provider --inspect\" next build",
+    "start": "cross-env NODE_OPTIONS=\"--openssl-legacy-provider --inspect\" next dev",
     "lint": "next lint"
   },
   "dependencies": {
