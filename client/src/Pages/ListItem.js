@@ -1,59 +1,38 @@
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 // import { useHistory } from 'react-router-dom'
 // import './App.css';
+import api from '../Api/index'
 
 function App() {
   // const history = useHistory()
+  const [items, SetItems] = useState([]);
 
-  async function registerUser(event){
-    event.preventDefault()
-    const response = await fetch('http://localhost:8000/api/register',{
-      method: 'POST',
-			headers: {
-				'Content-Type': 'application/json',
-			},
-			body: JSON.stringify({
-				name,
-				email,
-				password,
-			}),
-    })
-    const data = await response.json()
+  const retrieveItems = async () => {
+      const response = await api.get("/item");
+      return response.data;
+    }
+    useEffect(() => {
+    
+        const getAllItem = async () => {
+          const allItem = await retrieveItems();
+          if (allItem) {
+            SetItems(allItem);
+          };
+        };
+        getAllItem();
+    }, []);
+  
+        console.log(items);
 
-		if (data.status === 'ok') {
-			// history.push('/login')
-      console.log("okk")
-		}
-  }
   return (
     <div className="App">
-      <h1>Register</h1>
-        <form onSubmit={registerUser}>
-          <input 
-          type="text" 
-          placeholder=" Name"
-          value={name}
-          onChange={(e)=>setName(e.target.value)}
-          />
-          <br/><br/>
-          <input 
-          type="email" 
-          placeholder="Email"
-          value={email}
-          onChange={(e)=>setEmail(e.target.value)}
-          />
-          <br/><br/>
-          <input 
-          type="password" 
-          placeholder="Password"
-          value={password}
-          onChange={(e)=>setPassword(e.target.value)}
-          />
-          <br/><br/>
-          <input type="submit" value="Register"/>
-        </form>
+      <ul>
+      {items.map((item) => {
+      return <li key={item._id}>{item.nom} | {item.type} | {item.qte}</li>;
+    })}
+      </ul>
     </div>
   );
-}
+  }
 
 export default App;
