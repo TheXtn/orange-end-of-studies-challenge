@@ -7,6 +7,7 @@ const User = require ('./src/models/UserModel')
 const jwt = require('jsonwebtoken')
 const bcrypt = require('bcryptjs')
 const itemRouter = require("./src/Controllers/ItemController");
+const userRouter = require("./src/Controllers/AuthController");
 
 app.use(cors())
 app.use(express.json())
@@ -58,40 +59,9 @@ app.post('/api/login', async (req, res) => {
 	}
 })
 
-app.get('/api/quote', async (req, res) => {
-	const token = req.headers['x-access-token']
-
-	try {
-		const decoded = jwt.verify(token, 'secret123')
-		const email = decoded.email
-		const user = await User.findOne({ email: email })
-
-		return res.json({ status: 'ok', quote: user.quote })
-	} catch (error) {
-		console.log(error)
-		res.json({ status: 'error', error: 'invalid token' })
-	}
-})
-
-app.post('/api/quote', async (req, res) => {
-	const token = req.headers['x-access-token']
-
-	try {
-		const decoded = jwt.verify(token, 'secret123')
-		const email = decoded.email
-		await User.updateOne(
-			{ email: email },
-			{ $set: { quote: req.body.quote } }
-		)
-
-		return res.json({ status: 'ok' })
-	} catch (error) {
-		console.log(error)
-		res.json({ status: 'error', error: 'invalid token' })
-	}
-})
 
 app.use('/api/item',itemRouter);
+app.use('/api/user',userRouter);
 
 app.listen(8000,()=>
 {
