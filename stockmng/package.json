@@ -5,7 +5,7 @@
   "scripts": {
     "production": "cross-env NODE_ENV=production NODE_OPTIONS=--openssl-legacy-provider  node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
     "dev": "next dev",
-    "build": "next build",
+    "build": "cross-env NODE_OPTIONS=\"--openssl-legacy-provider --inspect\"",
     "start": "cross-env NODE_OPTIONS=\"--openssl-legacy-provider --inspect\" next dev",
     "lint": "next lint"
   },
