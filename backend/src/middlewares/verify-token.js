@@ -42,6 +42,7 @@ const verifyManager = (req,res,next)=>{
         {next();}
         else
         {
+            console.log(req.user.role)
             return next(createError(403,"you are not a manager!"))
         }
     })

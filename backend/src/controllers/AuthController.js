@@ -160,10 +160,57 @@ const generateAccessToken = async (req,res)=>{
     }
 }
 
+
 const logout=(req,res)=>{
     console.log("refresh",refreshTokens);
     refreshTokens=refreshTokens.filter((token)=>token !==req.body);
     return res.status(204).json({msg:"logout successful"})
 }
 
-module.exports={registerUser,login,logout,refreshTokens,generateAccessToken}
+
+/*user modules functions*/
+
+
+const getUserById = (req,res)=>{
+    if(!req.params.idUser)
+        return res.status(400).json('user id required');
+    User.findById(req.params.idUser,(err,result)=>{
+        if (err)
+            return res.status(400).json(err);
+        return res.status(200).json(result);
+    })
+}
+
+const updateUser = async (req,res,next)=>{
+    try {
+        const updatedUser = await User.findByIdAndUpdate(
+            req.params.id,
+            { $set: req.body },
+            { new: true }
+        );
+        res.status(200).json(updatedUser);
+    } catch (err) {
+        next(err);
+    }
+}
+
+
+const listUsers = async(req,res)=>{
+    const list = await User.find();
+
+    if(!list)
+        return res.status(500).json('oops! something went wrong.');
+    return res.status(200).json(list);
+}
+
+
+const deleteUser = async(req,res)=>{
+
+
+    const result = await User.deleteOne({_id:req.params.id});
+    if (result)
+        return res.status(200).json(result);
+    return res.status(500).json('oops! something went wrong.');
+}
+
+module.exports={registerUser,login,logout,refreshTokens,generateAccessToken,getUserById,updateUser,listUsers,deleteUser}
