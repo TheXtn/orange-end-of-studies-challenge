@@ -5,7 +5,7 @@
   "scripts": {
     "production": "cross-env NODE_ENV=production NODE_OPTIONS=--openssl-legacy-provider  node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
     "dev": "next dev",
-    "build": "npx cross-env NODE_OPTIONS=\"--openssl-legacy-provider --inspect\"next build",
+    "build": "npx cross-env NODE_OPTIONS=\"--openssl-legacy-provider --inspect\" next build",
     "start": "cross-env NODE_OPTIONS=\"--openssl-legacy-provider --inspect\" next dev",
     "lint": "next lint"
   },
@@ -33,9 +33,9 @@
     "react-dom": "17.0.2",
     "react-icons": "^4.3.1",
     "swr": "^1.0.1"
-
   },
   "devDependencies": {
+    "cross-env": "^7.0.3",
     "eslint": "7.32.0",
     "eslint-config-next": "11.1.2"
   }
