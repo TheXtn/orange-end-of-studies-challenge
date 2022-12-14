@@ -4,6 +4,11 @@
 # To run 
 Just clone and run: npm -i
 Then run: npm run dev
+# Next js file structure 
+api folder : contains backend based on express js
+Pages folder : contains the application pages
+Components folder : contains the application components 
+
 # Api doc:
 # User management:
     POST http://localhost:3000/api/auth/signup body { username , name , password}
@@ -15,3 +20,4 @@ Then run: npm run dev
     DELETE http://localhost:3000/api/itemsServices delete product
     GET http://localhost:3000/api/itemsServices/{id} get product by id
     
+# Made with ❤️ By Yussef mrabet at orange developer center
