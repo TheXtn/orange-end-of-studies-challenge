@@ -41,7 +41,7 @@ export async function getServerSideProps(context){
             }
         }
     }
-  const res=await fetch('http://localhost:3000/api/itemsServices')
+  const res=await fetch(process.env.APISERVER+'/api/itemsServices')
     const data=await res.json()
   return {
     props:{

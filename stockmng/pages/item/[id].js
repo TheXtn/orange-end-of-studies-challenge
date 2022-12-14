@@ -18,7 +18,7 @@ export default function ItemDetail(){
     const [item,setitem]=useState({})
     async function Work(){
         setloading(true)
-        const res=await fetch("http://localhost:3000/api/itemsServices/"+router.query['id'])
+        const res=await fetch(process.env.APISERVER+"/api/itemsServices/"+router.query['id'])
         const d=await res.json();
         setitem(d.data)
         setloading(false)

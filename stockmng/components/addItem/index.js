@@ -29,7 +29,7 @@ export default function AddItem() {
         })
         
     }
-    const res=await fetch("http://localhost:3000/api/itemsServices",config)
+    const res=await fetch(process.env.APISERVER+"/api/itemsServices",config)
     const data=await res.json()
     if (res.status==200){
         toast({
