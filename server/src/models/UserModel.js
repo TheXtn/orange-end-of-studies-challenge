@@ -7,7 +7,6 @@ const User = new mongoose.Schema(
 		password: { type: String, required: true },
 		quote: { type: String },
 	},
-	{ collection: 'user-data' }
 )
 
 const model = mongoose.model('UserData', User)

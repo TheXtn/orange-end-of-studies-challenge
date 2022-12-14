@@ -3,7 +3,7 @@ const app = express()
 const cors = require('cors')
 const mongoose = require('mongoose')
 require('dotenv').config();
-// const User = require ('./src/models/UserModel')
+const User = require ('./src/models/UserModel')
 
 app.use(cors())
 app.use(express.json())
@@ -17,11 +17,40 @@ app.post('/api/register', async (req, res) => {
 		await User.create({
 			name: req.body.name,
 			email: req.body.email,
-			password: newPassword,
+			password: req.body.password,
 		})
 		res.json({ status: 'ok' })
 	} catch (err) {
 		res.json({ status: 'error', error: 'Duplicate email' })
+	}
+})
+
+app.post('/api/login', async (req, res) => {
+	const user = await User.findOne({
+		email: req.body.email,
+	})
+
+	if (!user) {
+		return { status: 'error', error: 'Invalid login' }
+	}
+
+	const isPasswordValid = await bcrypt.compare(
+		req.body.password,
+		user.password
+	)
+
+	if (isPasswordValid) {
+		const token = jwt.sign(
+			{
+				name: user.name,
+				email: user.email,
+			},
+			'secret123'
+		)
+
+		return res.json({ status: 'ok', user: token })
+	} else {
+		return res.json({ status: 'error', user: false })
 	}
 })
 
