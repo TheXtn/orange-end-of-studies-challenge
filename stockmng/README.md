@@ -4,7 +4,7 @@
 # To run 
 Just clone and run: npm -i
 Then run: npm run dev
-# Next js file structure 
+# Next js files structure
 api folder : contains backend based on express js
 Pages folder : contains the application pages
 Components folder : contains the application components 
