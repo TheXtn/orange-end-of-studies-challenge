@@ -4,7 +4,6 @@ import "react-code-ui/dist/index.css";
 import img from "../public/Development-cuate.svg"
 import classes from "../config/config.module.css";
 import NextImage from "next/image";
-import Zoom from 'react-reveal/Zoom'
 export default function Ab(){
 	return (
 		<div>
