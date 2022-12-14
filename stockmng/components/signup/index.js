@@ -3,7 +3,7 @@ import Image from 'next/image'
 import styles from '../../styles/Home.module.css'
 import {chakra, FormLabel, GridItem, Heading, SimpleGrid, VStack} from "@chakra-ui/react";
 import Link from 'next/link'
-import LoadingOverlay from 'react-loading-overlay';
+
 import {
     useToast,
     Fade, ScaleFade, Slide, SlideFade,Progress,
