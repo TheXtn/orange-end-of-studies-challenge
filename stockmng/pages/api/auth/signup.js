@@ -20,9 +20,18 @@ export default async function handle(req,res){
                 })
                 return 
             }
-            const hashedpwd=hashpassword(password)
+
+            const hashedpwd=await hashpassword(password)
             const client = await ConnectToDb();
+           
             const usersCollection = client.db().collection('users');
+            const finduer= await usersCollection.findOne({username:username})
+            if (finduer){
+                res.status(402).json({
+                    message:'User Exist'
+                })
+                return
+            }
             const user=await usersCollection.insertOne({
                 username:username,
                 name:name,

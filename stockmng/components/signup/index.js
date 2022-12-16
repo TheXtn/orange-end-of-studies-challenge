@@ -57,7 +57,7 @@ export default function SignUpComp() {
           })
           
       }
-      const res=await fetch("http://localhost:3000/api/auth/signup",config)
+      const res=await fetch("/api/auth/signup",config)
       const data=await res.json()
       if (res.status==200){
           toast({
