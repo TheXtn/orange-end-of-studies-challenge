@@ -1,5 +1,6 @@
 import {ConnectToDb} from "../../../lib/db";
 import {getSession} from "next-auth/client";
+import {hashpassword} from "../../../lib/auth"
 export default async function handle(req,res){
    
     const session=await getSession({req:req})
@@ -19,12 +20,13 @@ export default async function handle(req,res){
                 })
                 return 
             }
+            const hashedpwd=hashpassword(password)
             const client = await ConnectToDb();
             const usersCollection = client.db().collection('users');
             const user=await usersCollection.insertOne({
                 username:username,
                 name:name,
-                password:password
+                password:hashedpwd
             })
             res.status(200).json({
                 message:"User added ."

@@ -26,7 +26,7 @@ export default function EditItem(props) {
         })
         
     }
-    const res=await fetch(process.env.APISERVER+"/api/itemsServices",config)
+    const res=await fetch("/api/itemsServices",config)
     const data=await res.json()
     if (res.status==200){
         toast({

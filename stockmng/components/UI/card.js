@@ -28,7 +28,7 @@ const Ma = (props) => {
         })
         
     }
-    const res=await fetch(process.env.APISERVER+"/api/itemsServices",config)
+    const res=await fetch("/api/itemsServices",config)
     const data=await res.json()
     if (res.status==200){
         toast({
@@ -178,7 +178,7 @@ const Ma = (props) => {
                 outline: "none",
               }}
             >
-              <Link href={"http://localhost:3000/item/"+id}>
+              <Link href={"/item/"+id}>
                 View
                 </Link>
 
